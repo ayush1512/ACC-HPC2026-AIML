@@ -26,9 +26,9 @@ All practical implementations reside in three master notebooks at the root of th
 
 | Notebook | Focus Area | Paradigms & Algorithms Covered | Primary Datasets |
 |:---|:---|:---|:---|
-| **[`Supervised.ipynb`](file:///d:/Github/ACC-HPC2026-AIML/Supervised.ipynb)** | Supervised Learning | Simple Linear Regression, Multiple Linear Regression, Polynomial Regression, Binary & Multiclass Logistic Regression, Decision Trees (Gini & Entropy), Naïve Bayes (Gaussian, Multinomial, Bernoulli) | Synthetic Regression, Diabetes, Breast Cancer Wisconsin, Iris |
-| **[`Unsupervised.ipynb`](file:///d:/Github/ACC-HPC2026-AIML/Unsupervised.ipynb)** | Unsupervised Learning | Hierarchical (Agglomerative) Clustering, DBSCAN, K-Means Clustering, Association Rule Mining (Apriori), Dimensionality Reduction (TruncatedSVD vs. t-SNE), Principal Component Analysis (PCA) | Iris, Synthetic Blobs, Retail Transactions, Handwritten Digits, Breast Cancer |
-| **[`Ensemble.ipynb`](file:///d:/Github/ACC-HPC2026-AIML/Ensemble.ipynb)** | Ensemble Learning | Bagging, Boosting (AdaBoost), Stacking (Heterogeneous Blending), Random Forest, Gradient Boosted Trees (GBDT), CatBoost, XGBoost, Benchmark Leaderboard | Breast Cancer Wisconsin |
+| **[`Supervised.ipynb`](./Supervised.ipynb)** | Supervised Learning | Simple Linear Regression, Multiple Linear Regression, Polynomial Regression, Binary & Multiclass Logistic Regression, Decision Trees (Gini & Entropy), Naïve Bayes (Gaussian, Multinomial, Bernoulli) | Synthetic Regression, Diabetes, Breast Cancer Wisconsin, Iris |
+| **[`Unsupervised.ipynb`](./Unsupervised.ipynb)** | Unsupervised Learning | Hierarchical (Agglomerative) Clustering, DBSCAN, K-Means Clustering, Association Rule Mining (Apriori), Dimensionality Reduction (TruncatedSVD vs. t-SNE), Principal Component Analysis (PCA) | Iris, Synthetic Blobs, Retail Transactions, Handwritten Digits, Breast Cancer |
+| **[`Ensemble.ipynb`](./Ensemble.ipynb)** | Ensemble Learning | Bagging, Boosting (AdaBoost), Stacking (Heterogeneous Blending), Random Forest, Gradient Boosted Trees (GBDT), CatBoost, XGBoost, Benchmark Leaderboard | Breast Cancer Wisconsin |
 
 ---
 
