@@ -239,7 +239,9 @@ If you have never built a machine learning model before, imagine you are a **Mas
 
 * **Underlying Logic:** Orthogonal linear transformation projecting data onto axes of maximum variance while eliminating multicollinearity.
 * **Explained Variance Ratio:**
-  $$\text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}$$
+    $$
+  \text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}
+  $$
 
 ---
 
