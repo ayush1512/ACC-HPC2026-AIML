@@ -179,8 +179,8 @@ If you have never built a machine learning model before, imagine you are a **Mas
   - $\epsilon$ (`eps`): Radius of neighborhood around point $p$.
   - `min_samples`: Minimum number of points within $\epsilon$-radius for $p$ to be declared a **Core Point**.
 * **Point Classifications:**
-  - **Core Point:** $|N_\epsilon(p)| \ge \text{min\_samples}$.
-  - **Border Point:** $|N_\epsilon(p)| < \text{min\_samples}$, but within $\epsilon$ of a core point.
+  - **Core Point:** $|N_\epsilon(p)| \ge \text{MinSamples}$ (neighborhood contains at least `min_samples` points).
+  - **Border Point:** $|N_\epsilon(p)| \lt \text{MinSamples}$, but within $\epsilon$ of a core point.
   - **Noise Point (Outlier):** Neither core nor border point; assigned cluster label `-1`.
 
 ---
