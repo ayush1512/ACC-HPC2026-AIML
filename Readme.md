@@ -1,8 +1,8 @@
-# Machine Learning Engineering & Pedagogical Reference Guide
+# Machine Learning & Deep Learning Engineering Reference Guide
 
-A master laboratory handbook, theoretical reference, and beginner-friendly guide for modern Machine Learning using **Scikit-Learn**, **MLxtend**, **XGBoost**, and **CatBoost**.
+A master laboratory handbook, theoretical reference, and beginner-friendly guide for modern Machine Learning and Deep Learning using **Scikit-Learn**, **MLxtend**, **XGBoost**, **CatBoost**, **PyTorch**, and **TensorFlow / Keras**.
 
-This repository contains three standardized, self-contained educational notebooks engineered around an **8-Step Pedagogical Workflow**. Every algorithm is isolated with complete code implementations, explanatory documentation, plain-English ("Lemon / Layman's Language") analogies, diagnostic metrics, and publication-ready visualizations.
+This repository contains five standardized, self-contained educational notebooks engineered around an **8-Step Pedagogical Workflow**. Every algorithm is isolated with complete code implementations, explanatory documentation, plain-English ("Lemon / Layman's Language") analogies, diagnostic metrics, hardware acceleration (GPU/MPS/CPU), and publication-ready visualizations.
 
 ---
 
@@ -14,6 +14,7 @@ This repository contains three standardized, self-contained educational notebook
    - [Part I: Supervised Learning](#part-i-supervised-learning)
    - [Part II: Unsupervised Learning](#part-ii-unsupervised-learning)
    - [Part III: Ensemble Learning](#part-iii-ensemble-learning)
+   - [Part IV: Deep Learning & Neural Networks](#part-iv-deep-learning--neural-networks)
 4. [Exhaustive API, Function & Module Reference](#-exhaustive-api-function--module-reference)
 5. [Evaluation Metrics & Interpretation Guide](#-evaluation-metrics--interpretation-guide)
    - [🍋 Precision vs. Recall: The Boy Who Cried Wolf Analogy](#-precision-vs-recall-the-boy-who-cried-wolf-analogy)
@@ -24,19 +25,21 @@ This repository contains three standardized, self-contained educational notebook
 
 ## 📂 Core Notebooks Overview
 
-All practical implementations reside in three master notebooks at the root of this repository:
+All practical implementations reside in five master notebooks at the root of this repository:
 
 | Notebook | Focus Area | Paradigms & Algorithms Covered | Primary Datasets |
 |:---|:---|:---|:---|
 | **[`Supervised.ipynb`](./Supervised.ipynb)** | Supervised Learning | Simple Linear Regression, Multiple Linear Regression, Polynomial Regression, Binary & Multiclass Logistic Regression, Decision Trees (Gini & Entropy), Naïve Bayes (Gaussian, Multinomial, Bernoulli) | Synthetic Regression, Diabetes, Breast Cancer Wisconsin, Iris |
 | **[`Unsupervised.ipynb`](./Unsupervised.ipynb)** | Unsupervised Learning | Hierarchical (Agglomerative) Clustering, DBSCAN, K-Means Clustering, Association Rule Mining (Apriori), Dimensionality Reduction (TruncatedSVD vs. t-SNE), Principal Component Analysis (PCA) | Iris, Synthetic Blobs, Retail Transactions, Handwritten Digits, Breast Cancer |
 | **[`Ensemble.ipynb`](./Ensemble.ipynb)** | Ensemble Learning | Bagging, Boosting (AdaBoost), Stacking (Heterogeneous Blending), Random Forest, Gradient Boosted Trees (GBDT), CatBoost, XGBoost, Benchmark Leaderboard | Breast Cancer Wisconsin |
+| **[`NeuralNetworks_PyTorch.ipynb`](./NeuralNetworks_PyTorch.ipynb)** | Deep Learning (PyTorch) | Single-Layer Perceptron, Deep MLP, CNN, Vanilla RNN, Bidirectional LSTM, End-to-End CIFAR-10 Pipeline (GPU Acceleration) | MNIST Digits, Sentiment Sequences, CIFAR-10 |
+| **[`NeuralNetworks_TensorFlow.ipynb`](./NeuralNetworks_TensorFlow.ipynb)** | Deep Learning (TensorFlow/Keras) | Single-Layer Perceptron, Deep MLP, CNN, Vanilla RNN, Bidirectional LSTM, End-to-End CIFAR-10 Pipeline (GPU Acceleration) | MNIST Digits, Sentiment Sequences, CIFAR-10 |
 
 ---
 
 ## 🔄 The 8-Step Pedagogical Template
 
-To establish rigorous engineering discipline and cognitive predictability, every algorithm in all three notebooks strictly adheres to an identical **8-step workflow**:
+To establish rigorous engineering discipline and cognitive predictability, every algorithm across all five notebooks strictly adheres to an identical **8-step workflow**:
 
 ```mermaid
 flowchart LR
@@ -334,6 +337,131 @@ flowchart TD
 
 ---
 
+### Part IV: Deep Learning & Neural Networks
+
+Deep Learning models are hierarchical feature extractors composed of stacked layers of parameterized matrix operations and non-linear transformations.
+
+```mermaid
+flowchart TD
+    DL["Deep Learning Paradigms"] --> FFN["Feedforward (MLP)"]
+    DL --> SPATIAL["Spatial (CNN)"]
+    DL --> SEQUENTIAL["Sequential (RNN / LSTM)"]
+    DL --> PROD["Production Pipelines"]
+
+    FFN --> FFN1["Perceptron & Deep MLP (ReLU, Dropout, Adam)"]
+    SPATIAL --> CNN1["Convolution, Pooling & Feature Hierarchies"]
+    SEQUENTIAL --> RNN1["Vanilla RNN (Hidden State Recurrence)"]
+    SEQUENTIAL --> LSTM1["LSTM (Gated Cell State Highway)"]
+    PROD --> PROD1["CIFAR-10 (Augmentation, BatchNorm, Schedulers)"]
+```
+
+#### 1. Basics of Neural Networks (Perceptron & Deep MLP)
+> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> Imagine an orchestra where musicians are seated in rows. The front row (input layer) hears the conductor's cue. Each musician plays a note and adjusts their volume based on how loud their neighbor was playing (weights). The musicians in the middle rows (hidden layers) combine what they hear from the row ahead, blend the harmonies, and pass it back. The back row (output layer) produces the final grand chord. When the audience applauds or winces (the loss function), a critic walks backward through the orchestra (**backpropagation**), tapping individual musicians on the shoulder to tell them: *"Play a little softer next time,"* or *"Louder on that beat!"*
+
+* **Underlying Logic:** A universal function approximator mapping input $\mathbf{x}$ to target $\hat{y}$ via compositions of parameterized linear projections and non-linear activations:
+  $$z = \sum_{i=1}^n w_i x_i + b = \mathbf{w}^T \mathbf{x} + b, \quad a = \sigma(z)$$
+* **Core Activation Functions:**
+  - **Sigmoid:** $\sigma(z) = \frac{1}{1 + e^{-z}} \in (0, 1)$ — Maps outputs to probabilities; prone to gradient saturation when $|z|$ is large.
+  - **ReLU (Rectified Linear Unit):** $\text{ReLU}(z) = \max(0, z)$ — Standard hidden activation avoiding vanishing gradients for positive inputs.
+  - **Softmax:** $\text{Softmax}(z_k) = \frac{e^{z_k}}{\sum_{j=1}^C e^{z_j}}$ — Converts unconstrained logits into valid probability distributions over $C$ classes.
+* **Loss Function (Categorical Cross-Entropy):**
+  $$\mathcal{L} = -\sum_{c=1}^C y_c \log(\hat{y}_c)$$
+* **🔬 Deep Layer Internals:**
+  - **Linear / Dense Layer:** Forward transformation $\mathbf{Y} = \mathbf{X}\mathbf{W}^T + \mathbf{b}$. Parameter count: $D_{out} \times (D_{in} + 1)$. Initialized via He/Kaiming uniform or Xavier normal to preserve variance across depth.
+  - **Backpropagation & Autodiff:** Gradients are calculated via the chain rule ($\frac{\partial \mathcal{L}}{\partial w_{ij}} = \delta_i \cdot x_j$). PyTorch constructs dynamic Directed Acyclic Graphs (DAGs) traversed via `loss.backward()`, while TensorFlow records operations on a `tf.GradientTape`.
+  - **Dropout Regularization:** Randomly zeroes activations with probability $p$ and scales survivors by $\frac{1}{1-p}$ (inverted dropout), forcing neurons to learn redundant representations without co-dependency.
+  - **Adam Optimizer:** Maintains exponentially decaying first moments ($m_t$, momentum) and second moments ($v_t$, adaptive scaling) to update parameters: $\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}_t} + \epsilon} \hat{m}_t$.
+
+---
+
+#### 2. Convolutional Neural Networks (CNN)
+> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> Imagine inspecting a giant museum painting with a magnifying glass. You don't try to swallow the entire wall in one glance. You slide your small circular lens (the **convolution filter**) row by row. At each spot, your magnifying glass checks for tiny brushstrokes: vertical lines, curves, corners. Later layers combine those small brushstroke detections into larger shapes (eyes, wheels, doors), and the final layer determines whether the painting is a portrait or a landscape!
+
+* **Underlying Logic:** Preserves 2D grid topology and spatial correlation in images via local receptive fields, weight sharing, and spatial pooling.
+* **Mathematical Formulation (2D Discrete Cross-Correlation):**
+  $$\text{Output}(i, j, k) = \mathbf{b}_k + \sum_{c=1}^{C_{in}} \sum_{m} \sum_{n} \mathbf{X}(i \cdot S + m, j \cdot S + n, c) \cdot \mathbf{W}(m, n, c, k)$$
+* **Spatial Output Sizing:**
+  $$H_{out} = \left\lfloor \frac{H_{in} - K_h + 2P}{S} \right\rfloor + 1, \quad W_{out} = \left\lfloor \frac{W_{in} - K_w + 2P}{S} \right\rfloor + 1$$
+* **🔬 Deep Layer Internals:**
+  - **Parameter Efficiency:** A filter with $C_{in}=1, C_{out}=32, K=3\times3$ has only $32 \times (1 \times 9 + 1) = 320$ parameters, versus millions in a flattened dense layer.
+  - **Max Pooling:** Computes $\max$ over non-overlapping windows (typically $2 \times 2$), halving height and width ($28 \times 28 \to 14 \times 14$) without learnable weights to confer translational invariance.
+
+---
+
+#### 3. Recurrent Neural Networks (RNN)
+> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> Imagine reading a suspense mystery novel. As you read word by word, you don't memorize every single past letter. Instead, you keep a running mental summary in your head: *"The detective just found a muddy footprint."* When you read the next word, you update your mental summary. The **hidden state** is that running mental summary!
+
+* **Underlying Logic:** Models temporal dependencies across sequential tokens by maintaining an evolving internal hidden state vector $\mathbf{h}_t$.
+* **Mathematical Formulation:**
+  $$\mathbf{h}_t = \tanh(\mathbf{W}_{xh} \mathbf{x}_t + \mathbf{W}_{hh} \mathbf{h}_{t-1} + \mathbf{b})$$
+* **🔬 Deep Layer Internals:**
+  - **Embedding Layer:** High-cardinality discrete token IDs ($w_t \in [0, V-1]$) are transformed into continuous semantic vectors via lookup matrix $\mathbf{E} \in \mathbb{R}^{V \times D}$: $\mathbf{x}_t = \mathbf{E}[w_t, :]$.
+  - **The Vanishing / Exploding Gradient Flaw:** During Backpropagation Through Time (BPTT), repeated matrix multiplications by $\mathbf{W}_{hh}^T$ cause error gradients to decay exponentially ($\|\mathbf{W}_{hh}\| < 1$) or explode ($\|\mathbf{W}_{hh}\| > 1$), preventing standard RNNs from learning dependencies beyond 5–10 timesteps.
+
+---
+
+#### 4. Long Short-Term Memory Networks (LSTM)
+> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> Think of an LSTM as a student studying for a history exam with a digital notebook.
+> - The **Forget Gate** is the backspace key: it deletes outdated information (like a rumor that was proven false).
+> - The **Input Gate** is the copy-paste tool: when the teacher says *"This will be on the final exam,"* it saves those key facts into the notebook.
+> - The **Cell State** is the notebook itself — safely carrying important memories across all chapters.
+> - The **Output Gate** is the student answering a specific quiz question based on what's currently in their notes.
+
+* **Underlying Logic:** Solves the vanishing gradient problem via an additive, unconstrained **Cell State Highway** ($\mathbf{C}_t$) governed by three non-linear multiplicative gates.
+* **The Four Gating Formulations:**
+  1. **Forget Gate:** $\mathbf{f}_t = \sigma(\mathbf{W}_f \mathbf{x}_t + \mathbf{U}_f \mathbf{h}_{t-1} + \mathbf{b}_f) \in [0, 1]$ (what to erase).
+  2. **Input Gate:** $\mathbf{i}_t = \sigma(\mathbf{W}_i \mathbf{x}_t + \mathbf{U}_i \mathbf{h}_{t-1} + \mathbf{b}_i)$ & candidate $\tilde{\mathbf{C}}_t = \tanh(\mathbf{W}_c \mathbf{x}_t + \mathbf{U}_c \mathbf{h}_{t-1} + \mathbf{b}_c)$ (what to store).
+  3. **Cell State Update:** $\mathbf{C}_t = \mathbf{f}_t \odot \mathbf{C}_{t-1} + \mathbf{i}_t \odot \tilde{\mathbf{C}}_t$ (additive gradient flow).
+  4. **Output Gate:** $\mathbf{o}_t = \sigma(\mathbf{W}_o \mathbf{x}_t + \mathbf{U}_o \mathbf{h}_{t-1} + \mathbf{b}_o), \quad \mathbf{h}_t = \mathbf{o}_t \odot \tanh(\mathbf{C}_t)$.
+* **Bidirectional LSTM:** Processes sequences both left-to-right ($\overrightarrow{\mathbf{h}}_t$) and right-to-left ($\overleftarrow{\mathbf{h}}_t$), concatenating representations for complete contextual awareness.
+
+---
+
+#### 5. Practical Deep Learning Pipelines (CIFAR-10)
+> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> Building a production-grade neural network is like preparing a gourmet feast:
+> - You need **quality ingredients** prepped properly (**Data Augmentation**: rotating and flipping pictures so the model doesn't just memorize one exact angle).
+> - You need **temperature control** (**Batch Normalization**: keeping numbers from getting too wild or cold).
+> - You need to **lower the flame** as the sauce simmers (**Learning Rate Scheduling**: taking smaller, gentler steps as the model nears perfection).
+> - You save the best tasting batch in the fridge (**Model Checkpointing**: saving the best weights automatically).
+
+* **Underlying Logic:** Combines data augmentation, normalization layers, adaptive learning rate schedules, and validation checkpointing for robust real-world generalization.
+* **🔬 Deep Layer Internals:**
+  - **Batch Normalization (`BatchNorm`):** Normalizes activations per mini-batch: $\hat{x}_i = \frac{x_i - \mu_B}{\sqrt{\sigma_B^2 + \epsilon}}$, followed by learnable affine scaling and shifting: $y_i = \gamma \hat{x}_i + \beta$. Eliminates internal covariate shift, enables higher learning rates, and acts as mild regularizer.
+  - **In-Graph Data Augmentation:** Random crops, horizontal flips, and color jitters artificially expand training diversity, forcing models to learn invariant features rather than memorizing pixel coordinates.
+  - **Learning Rate Scheduling:** Decays learning rates over time (e.g., `StepLR` or `ReduceLROnPlateau`), stabilizing optimization as parameters approach local minima.
+  - **Automated Checkpointing:** Tracks validation accuracy and serializes optimal parameter weights (`.pt` or `.keras`), preventing post-training overfitting degradation.
+
+---
+
+#### 6. Architecture Selection Matrix & Framework Comparison
+
+| Dimension | Multi-Layer Perceptron (MLP) | Convolutional Neural Network (CNN) | Recurrent Neural Network (RNN) | Long Short-Term Memory (LSTM) |
+|:---|:---|:---|:---|:---|
+| **Primary Domain** | Tabular records, independent vectors | Images, video, 2D/3D grid topologies | Short sequential sequences ($T < 10$) | Long-range text & temporal series |
+| **Input Tensor Shape**| 1D Flattened $(B, D)$ | 4D Tensors $(B, C, H, W)$ or $(B, H, W, C)$| Sequential $(B, T, D)$ | Sequential $(B, T, D)$ |
+| **Core Operation** | Fully connected $\mathbf{W}\mathbf{x} + \mathbf{b}$ | 2D Cross-correlation & pooling | Hidden recurrence $\mathbf{W}_{hh}\mathbf{h}_{t-1}$ | Gated additive cell highway |
+| **Spatial Awareness** | ❌ None (destroys pixel coordinates) | ✅ Translation invariant, local filters | ❌ None | ❌ None |
+| **Temporal Memory** | ❌ None | ❌ None | ⚠️ Short-range only | ✅ Long-range gated memory |
+| **Vanishing Gradients**| Moderate (mitigated by ReLU) | Low (mitigated by BatchNorm/ResNet) | ❌ Critical flaw | ✅ Mitigated by additive cell updates |
+| **Parameter Efficiency**| Low (dense all-to-all weights) | High (shared convolutional filters) | Moderate | Higher (4 internal gates per unit) |
+
+##### Framework Paradigms: PyTorch vs. TensorFlow / Keras
+
+| Feature | PyTorch (`torch`) | TensorFlow / Keras (`tf.keras`) |
+|:---|:---|:---|
+| **Model Creation** | Object-oriented `nn.Module` subclassing with explicit `forward()` method | Declarative `keras.Sequential` or Functional API (`keras.Model`) |
+| **Training Execution** | Explicit manual loop: `zero_grad()` $\to$ `backward()` $\to$ `step()` | Automated compilation: `model.compile()` and `model.fit()` |
+| **Hardware Management** | Explicit tensor/model device movement via `.to(device)` | Automatic GPU placement and memory allocation |
+| **Inference Mode** | Explicit `model.eval()` mode with `torch.no_grad()` context manager | Handled automatically inside `model.predict()` and `model.evaluate()` |
+| **Extensibility & Debugging**| Native Python debugging (`pdb`, print statements), dynamic graph | Built-in callbacks (`EarlyStopping`, `ModelCheckpoint`), deployment graph |
+
+---
+
 ## 📚 Exhaustive API, Function & Module Reference
 
 ### 1. Estimators & Machine Learning Models
@@ -390,6 +518,29 @@ flowchart TD
 | `calinski_harabasz_score`| `sklearn.metrics` | Variance Ratio Criterion: ratio of between-cluster dispersion to within-cluster dispersion (higher is better). |
 | `log_loss` | `sklearn.metrics` | Multi-class cross-entropy loss evaluating probabilistic calibration. |
 
+### 4. Deep Learning Frameworks (PyTorch & TensorFlow / Keras)
+
+| Class / Function | Module / Framework | Key Parameters & Defaults | Inner Logic & Practical Purpose |
+|:---|:---|:---|:---|
+| `torch.nn.Linear` | `torch.nn` (PyTorch) | `in_features`, `out_features`, `bias=True` | Fully connected affine linear projection: $\mathbf{Y} = \mathbf{X}\mathbf{W}^T + \mathbf{b}$. |
+| `torch.nn.Conv2d` | `torch.nn` (PyTorch) | `in_channels`, `out_channels`, `kernel_size`, `padding=0`, `stride=1` | 2D spatial cross-correlation convolution producing hierarchical feature maps. |
+| `torch.nn.MaxPool2d` | `torch.nn` (PyTorch) | `kernel_size=2`, `stride=2` | Spatial downsampling extracting max window values without learnable parameters. |
+| `torch.nn.BatchNorm2d`| `torch.nn` (PyTorch) | `num_features`, `eps=1e-5`, `momentum=0.1` | Normalizes mini-batch channel activations with learnable affine parameters $\gamma, \beta$. |
+| `torch.nn.Dropout` | `torch.nn` (PyTorch) | `p=0.5` | Regularization randomly zeroing neurons and scaling survivors by $\frac{1}{1-p}$ during training. |
+| `torch.nn.Embedding` | `torch.nn` (PyTorch) | `num_embeddings`, `embedding_dim`, `padding_idx=None` | Discrete integer token lookup table mapping word IDs into dense semantic vectors. |
+| `torch.nn.RNN` | `torch.nn` (PyTorch) | `input_size`, `hidden_size`, `batch_first=True` | Vanilla recurrent network maintaining hidden state transitions across sequence steps. |
+| `torch.nn.LSTM` | `torch.nn` (PyTorch) | `input_size`, `hidden_size`, `batch_first=True`, `bidirectional=True` | 3-gate long short-term memory recurrent layer with additive cell state gradient highway. |
+| `torch.nn.CrossEntropyLoss` | `torch.nn` (PyTorch) | `reduction='mean'` | Combines `LogSoftmax` and `NLLLoss` for stable multi-class probability optimization. |
+| `torch.optim.Adam` | `torch.optim` (PyTorch)| `lr=0.001`, `betas=(0.9, 0.999)`, `weight_decay=0` | Adaptive moment optimizer tracking first ($m_t$) and second ($v_t$) gradient moments. |
+| `torch.utils.data.DataLoader` | `torch.utils.data` (PyTorch) | `dataset`, `batch_size=64`, `shuffle=True`, `num_workers=0` | Multithreaded mini-batch iterator, data shuffler, and tensor batcher. |
+| `tf.keras.Sequential` | `tensorflow.keras` | `layers=[]` | High-level linear container chaining layers in sequential execution order. |
+| `tf.keras.layers.Dense`| `tensorflow.keras.layers` | `units`, `activation=None`, `use_bias=True` | Fully connected layer with integrated activation function and bias. |
+| `tf.keras.layers.Conv2D`| `tensorflow.keras.layers`| `filters`, `kernel_size=(3,3)`, `padding='same'`, `activation='relu'` | 2D convolution layer supporting in-graph padding and activation. |
+| `tf.keras.layers.LSTM`| `tensorflow.keras.layers`| `units`, `return_sequences=False` | Recurrent LSTM layer with optional sequence return or final hidden state output. |
+| `model.compile` | `tf.keras.Model` | `optimizer='adam'`, `loss='sparse_categorical_crossentropy'`, `metrics=['accuracy']` | Configures learning mechanics, loss metrics, and optimizer graph. |
+| `model.fit` | `tf.keras.Model` | `x`, `y`, `epochs=5`, `batch_size=64`, `validation_split=0.1`, `callbacks=[]` | High-level training execution loop monitoring validation metrics and callbacks. |
+| `callbacks.ModelCheckpoint` | `tensorflow.keras.callbacks` | `filepath`, `monitor='val_accuracy'`, `save_best_only=True` | Automatically persists optimal model weights to disk during training. |
+
 ---
 
 ## 📊 Evaluation Metrics & Interpretation Guide
@@ -437,16 +588,31 @@ $$\begin{array}{c|c|c}
   - *PCA:* Visual 3D projection onto orthogonal eigenvectors.
 * **[3Blue1Brown: Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra)**
   - Deep geometric intuition for matrices as linear transformations, dot products, determinants, and Eigenvectors / Eigenvalues (crucial for PCA and SVD).
+* **[3Blue1Brown: Neural Networks Series](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)**
+  - Chapters 1–4: What is a neural network, Gradient descent, Backpropagation intuition, and Backpropagation calculus.
+* **[Andrej Karpathy: Neural Networks — Zero to Hero](https://karpathy.ai/zero-to-hero.html)**
+  - Comprehensive masterclass building `micrograd`, MLPs, BatchNorm, WaveNet, and GPT from scratch in pure Python/PyTorch.
+  - Classic Essays: [Yes you should understand backprop](https://karpathy.medium.com/yes-you-should-understand-backprop-e034f7dafdb0), [The Unreasonable Effectiveness of RNNs](https://karpathy.github.io/2015/05/21/rnn-effectiveness/), [A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/).
+* **[Stanford University Deep Learning Courses](https://online.stanford.edu/)**
+  - **CS231n:** Convolutional Neural Networks for Visual Recognition (Fei-Fei Li, Justin Johnson).
+  - **CS224n:** Natural Language Processing with Deep Learning (Christopher Manning).
+* **[Christopher Olah & Jay Alammar Visual Guides](https://colah.github.io/)**
+  - [Understanding LSTM Networks](https://colah.github.io/posts/2015-08-Understanding-LSTMs/) — The definitive illustrated walkthrough of LSTM gates.
+  - [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) — Visual guide to attention mechanisms and Transformers.
 
 ### 3. Foundational Open-Access Textbooks
 
 * **[An Introduction to Statistical Learning (ISLP)](https://www.statlearning.com/)** — Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani. (Free PDF).
 * **[The Elements of Statistical Learning (ESL)](https://hastie.su.domains/ElemStatLearn/)** — Trevor Hastie, Robert Tibshirani, Jerome Friedman.
+* **[Deep Learning](https://www.deeplearningbook.org/)** — Ian Goodfellow, Yoshua Bengio, Aaron Courville.
+* **[Dive into Deep Learning (D2L.ai)](https://d2l.ai/)** — Interactive textbook with PyTorch, TensorFlow, and JAX code.
 * **[Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow](https://github.com/ageron/handson-ml3)** — Aurélien Géron.
 
 ### 4. Official Documentation & User Guides
 
 * [Scikit-Learn Official User Guide](https://scikit-learn.org/stable/user_guide.html)
+* [PyTorch Official Documentation & Tutorials](https://pytorch.org/docs/stable/index.html)
+* [TensorFlow & Keras Official Guide](https://www.tensorflow.org/guide)
 * [XGBoost Official Python Documentation](https://xgboost.readthedocs.io/en/stable/python/index.html)
 * [CatBoost Official Documentation](https://catboost.ai/en/docs/)
 * [MLxtend (Machine Learning Extensions) Documentation](https://rasbt.github.io/mlxtend/)
@@ -478,10 +644,10 @@ python -m pip install --upgrade pip
 ```
 
 ### 3. Install Dependencies
-Install all core machine learning libraries:
+Install all core machine learning and deep learning libraries using `requirements.txt`:
 
 ```powershell
-pip install scikit-learn pandas numpy matplotlib seaborn mlxtend xgboost catboost jinja2 jupyter
+pip install -r requirements.txt
 ```
 
 ### 4. Launch Jupyter Notebooks
@@ -495,3 +661,5 @@ Open:
 - [`Supervised.ipynb`](./Supervised.ipynb) for regression, logistic models, trees, and Naïve Bayes.
 - [`Unsupervised.ipynb`](./Unsupervised.ipynb) for clustering, association rules, SVD/t-SNE, and PCA.
 - [`Ensemble.ipynb`](./Ensemble.ipynb) for bagging, boosting, stacking, and benchmark leaderboards.
+- [`NeuralNetworks_PyTorch.ipynb`](./NeuralNetworks_PyTorch.ipynb) for Deep Learning using PyTorch (Perceptron, MLP, CNN, RNN, LSTM, CIFAR-10).
+- [`NeuralNetworks_TensorFlow.ipynb`](./NeuralNetworks_TensorFlow.ipynb) for Deep Learning using TensorFlow / Keras (Perceptron, MLP, CNN, RNN, LSTM, CIFAR-10).
