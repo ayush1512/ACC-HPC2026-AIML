@@ -117,10 +117,8 @@ If you have never built a machine learning model before, imagine you are a **Mas
 
 * **Underlying Logic:** Non-parametric recursive binary splitting algorithm that partitions feature space into axis-aligned rectangular regions with homogeneous target distributions.
 * **Splitting Criteria:**
-  1. **Gini Impurity:** Measures the probability of misclassifying a randomly chosen element:
-     $$I_G(t) = 1 - \sum_{i=1}^C p_i^2$$
-  2. **Shannon Entropy:** Measures information disorder / uncertainty in bits:
-     $$H(t) = -\sum_{i=1}^C p_i \log_2(p_i)$$
+  1. **Gini Impurity:** Measures the probability of misclassifying a randomly chosen element: $I_G(t) = 1 - \sum_{i=1}^C p_i^2$.
+  2. **Shannon Entropy:** Measures information disorder / uncertainty in bits: $H(t) = -\sum_{i=1}^C p_i \log_2(p_i)$.
 * **Information Gain:**
   $$IG(T, a) = H(T) - \sum_{v \in \text{values}(a)} \frac{|T_v|}{|T|} H(T_v)$$
 * **Gini vs. Entropy:** Gini is computationally faster (avoids logarithmic operations) and tends to isolate the most frequent class, while Entropy often produces slightly more balanced trees.
@@ -143,10 +141,8 @@ If you have never built a machine learning model before, imagine you are a **Mas
 * **Bayes' Theorem:**
   $$P(y|x_1, \dots, x_n) = \frac{P(y) \prod_{i=1}^n P(x_i|y)}{P(x_1, \dots, x_n)}$$
 * **Variants by Likelihood Distribution $P(x_i|y)$:**
-  - **Gaussian Naïve Bayes:** Assumes continuous features follow a Gaussian bell curve:
-    $$P(x_i|y) = \frac{1}{\sqrt{2\pi\sigma_y^2}} \exp\left( -\frac{(x_i - \mu_y)^2}{2\sigma_y^2} \right)$$
-  - **Multinomial Naïve Bayes:** Designed for discrete counts or term frequencies (e.g., text document classification):
-    $$P(x|y) \propto \prod_{i=1}^n \theta_{yi}^{x_i}$$
+  - **Gaussian Naïve Bayes:** Assumes continuous features follow a Gaussian bell curve: $P(x_i|y) = \frac{1}{\sqrt{2\pi\sigma_y^2}} \exp\left( -\frac{(x_i - \mu_y)^2}{2\sigma_y^2} \right)$.
+  - **Multinomial Naïve Bayes:** Designed for discrete counts or term frequencies: $P(x|y) \propto \prod_{i=1}^n \theta_{yi}^{x_i}$.
   - **Bernoulli Naïve Bayes:** Assumes binary boolean features ($x_i \in \{0, 1\}$), modeling feature presence vs. absence.
 
 ---
@@ -160,8 +156,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 
 * **Underlying Logic:** Bottom-up clustering where each observation starts in its own cluster, and pairs of clusters are successively merged based on minimum linkage distance until a single tree remains.
 * **Linkage Criteria:**
-  - **Ward's Linkage (Default):** Minimizes total within-cluster variance increase upon merging:
-    $$\Delta \text{ESS}_{AB} = \frac{n_A n_B}{n_A + n_B} \|\mu_A - \mu_B\|^2$$
+  - **Ward's Linkage (Default):** Minimizes total within-cluster variance increase upon merging: $\Delta \text{ESS}_{AB} = \frac{n_A n_B}{n_A + n_B} \|\mu_A - \mu_B\|^2$.
   - **Complete Linkage:** Maximum pairwise distance between points in clusters $A$ and $B$.
   - **Average Linkage:** Mean pairwise distance between points in clusters $A$ and $B$.
 
@@ -238,10 +233,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 > **PCA is the mathematical camera operator** that rotates around your high-dimensional data and finds the exact angle that captures the maximum spread and detail in the fewest snapshots.
 
 * **Underlying Logic:** Orthogonal linear transformation projecting data onto axes of maximum variance while eliminating multicollinearity.
-* **Explained Variance Ratio:**
-    $$
-  \text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}
-  $$
+* **Explained Variance Ratio:** $\text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}$
 
 ---
 
