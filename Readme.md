@@ -76,7 +76,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ### Part I: Supervised Learning
 
 #### 1. Linear Regression (Simple, Multiple, Polynomial)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine you are taking a taxi. There is a base fee just for sitting in the car (say, \$3, which is the **intercept**), and then for every kilometer driven, the meter adds \$2 (the **slope**). 
 > **Simple Linear Regression** finds the single straight line that best fits all your past taxi receipts so you can predict how much your next ride will cost.
 > **Multiple Linear Regression** adds more factors: distance + traffic delay minutes + luggage bags.
@@ -94,7 +94,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 2. Logistic Regression (Binary & Multiclass Softmax)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Instead of predicting a continuous number (like house prices), you want to answer a Yes/No question: *"Will it rain tomorrow?"*
 > If you used linear regression, it might tell you there is a 180% chance of rain, or a -30% chance—which makes no sense! 
 > Logistic Regression takes any number and squashes it through an **S-shaped slide (the Sigmoid curve)** so the output is strictly between 0% and 100%. If the probability is above 50%, you grab an umbrella!
@@ -111,7 +111,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 3. Decision Trees (CART: Gini Impurity vs. Shannon Entropy)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Think of the classic game of **"20 Questions"** or a doctor's diagnostic checklist:
 > *"Does the patient have a fever? Yes $\to$ Is there a cough? Yes $\to$ Diagnosis: Flu."*
 > The Decision Tree automatically figures out which question divides the patients best so it can make an accurate diagnosis in the fewest possible questions.
@@ -128,7 +128,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 4. Naïve Bayes (Gaussian, Multinomial, Bernoulli)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine an old-fashioned detective investigating a suspect on the street. The suspect is wearing a yellow raincoat, carrying a dripping umbrella, and splashing through puddles.
 > A "naïve" detective treats each clue **independently**:
 > - Clue 1: A raincoat strongly suggests it's raining outside.
@@ -152,7 +152,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ### Part II: Unsupervised Learning
 
 #### 1. Hierarchical (Agglomerative) Clustering
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine building a family ancestry tree in reverse. On Day 1, every person in town stands alone. On Day 2, the closest twin brothers hold hands and form a pair. On Day 3, nearby cousins join in to form family groups. On Day 4, whole clans merge until everyone in town is connected into one giant tree.
 > The **Dendrogram** is simply the family tree diagram. If you draw a horizontal line across it, you decide whether you want 3 large clans or 10 smaller families.
 
@@ -165,7 +165,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 2. Density-Based Spatial Clustering (DBSCAN)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine looking down at Earth from an airplane at night. 
 > Where streetlights and houses are packed tightly together, that is a bustling city (**Core Cluster**). Along the edges, quieter suburbs touch the city (**Border Points**).
 > A lone lighthouse out in the middle of a dark, empty ocean belongs to no city at all—it is an outlier (**Noise Point, label -1**).
@@ -183,7 +183,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 3. K-Means Clustering
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > You are hired by a university to place **3 Wi-Fi routers** in a large student hall.
 > 1. You drop 3 routers at random locations.
 > 2. Each student connects to whichever router is closest to them.
@@ -202,7 +202,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 4. Association Rule Mining (Apriori & Lift)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Supermarket detectives analyze grocery receipts to discover: *"What items are bought together?"*
 > If someone buys burger patties and burger buns, they are 85% likely to also buy ketchup (**Confidence**).
 > **What is Lift?** If people buy ketchup 20% of the time normally, but buy ketchup 80% of the time when they have burgers, the burgers "lift" ketchup sales by 4x ($\text{Lift} = 4.0$). The supermarket uses this trick to place ketchup right beside the meat counter!
@@ -217,7 +217,7 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 5. Dimensionality Reduction (TruncatedSVD vs. t-SNE)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine you have a 3D clay sculpture of a dragon with 64 tiny details.
 > **TruncatedSVD** is like shining a spotlight on the dragon and casting a 2D shadow on the wall. You lose 3D depth, but you capture the main outline quickly.
 > **t-SNE** is like peeling the skin off the dragon and pressing it flat onto a table like a world map, carefully stretching it so scales that were next to each other in 3D stay right next to each other on the table!
@@ -228,14 +228,14 @@ If you have never built a machine learning model before, imagine you are a **Mas
 ---
 
 #### 6. Principal Component Analysis (PCA)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine you need to take a single 2D photograph of a bicycle.
 > - If you take the photo directly from the front, it looks like a skinny straight pole—you can barely tell what it is!
 > - If you take the photo from the side, you see the wheels, frame, handlebars, and pedals in full glory.
 > **PCA is the mathematical camera operator** that rotates around your high-dimensional data and finds the exact angle that captures the maximum spread and detail in the fewest snapshots.
 
 * **Underlying Logic:** Orthogonal linear transformation projecting data onto axes of maximum variance while eliminating multicollinearity.
-* **Explained Variance Ratio:** $\text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}$
+* **ed Variance Ratio:** $\text{EVR}_k = \frac{\lambda_k}{\sum_{j=1}^p \lambda_j}$
 
 ---
 
@@ -261,7 +261,7 @@ flowchart TD
 ```
 
 #### 1. Bagging (Bootstrap Aggregation)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **"The Wisdom of the Crowd."** If you ask one person to guess how many jellybeans are in a giant jar, their guess might be way too high or way too low. But if you ask 100 different people and average their guesses, the crazy high guesses cancel out the crazy low guesses, and the group average is astonishingly accurate! That is Bagging.
 
 * **Underlying Logic:** Reduces model **variance** by training multiple independent base learners (deep trees) on different bootstrap subsets (sampling with replacement) and averaging predictions.
@@ -272,7 +272,7 @@ flowchart TD
 ---
 
 #### 2. Boosting (AdaBoost)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine a student practicing math problems with a smart tutor.
 > On Test 1, the student gets questions #3 and #7 wrong.
 > For Test 2, the tutor puts giant bright red stars on #3 and #7 and forces the student to spend 80% of their study time on them.
@@ -285,7 +285,7 @@ flowchart TD
 ---
 
 #### 3. Stacking (Stacked Generalization)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine consulting a panel of diverse doctors for a tricky diagnosis:
 > - Doctor 1 is a Radiologist (Random Forest).
 > - Doctor 2 is a Cardiologist (KNN).
@@ -297,7 +297,7 @@ flowchart TD
 ---
 
 #### 4. Random Forest Classifier
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine a murder mystery game with 100 detectives. If all 100 detectives look at the bloody fingerprint first, they all form the exact same theory and might get tricked together.
 > In a **Random Forest**, you blindfold the detectives so each detective only gets to look at 3 random clues (e.g., Detective A only sees shoes and alibis; Detective B only sees phone logs and bank accounts). Because they look at completely different evidence, the forest as a whole cannot be fooled!
 
@@ -306,7 +306,7 @@ flowchart TD
 ---
 
 #### 5. Gradient Boosted Decision Trees (GBDT)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine playing miniature golf. 
 > - Your first putt lands 4 feet short of the hole (that 4-foot distance is your **error / residual**).
 > - Your second stroke doesn't start from the beginning; it aims specifically to fix that 4-foot error!
@@ -318,7 +318,7 @@ flowchart TD
 ---
 
 #### 6. CatBoost Classifier
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > A super-smart robot engine that loves words and categories! Most algorithms panic when they see words like "Toyota", "Ford", or "Blue" and demand you convert them into messy binary columns. CatBoost understands categories naturally and builds perfectly balanced, mirror-image decisions (**symmetric oblivious trees**) that make it blazing fast.
 
 * **Underlying Logic:** Built by Yandex with **Oblivious Trees** (evaluating identical split conditions across all depth nodes) and **Ordered Boosting** to eliminate target leakage.
@@ -326,7 +326,7 @@ flowchart TD
 ---
 
 #### 7. XGBoost Classifier (Extreme Gradient Boosting)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > The **Formula 1 racing car** of machine learning. It uses gradient boosting but is engineered with turbochargers (parallel processing) and smart disc brakes (**regularization**). The brakes prevent the car from memorizing the racetrack too closely (overfitting), allowing it to win machine learning competitions around the world!
 
 * **Underlying Logic:** Optimized regularized gradient boosting using a second-order Taylor expansion with both first-order gradients ($g_i$) and second-order Hessians ($h_i$).
@@ -352,7 +352,7 @@ flowchart TD
 ```
 
 #### 1. Basics of Neural Networks (Perceptron & Deep MLP)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine an orchestra where musicians are seated in rows. The front row (input layer) hears the conductor's cue. Each musician plays a note and adjusts their volume based on how loud their neighbor was playing (weights). The musicians in the middle rows (hidden layers) combine what they hear from the row ahead, blend the harmonies, and pass it back. The back row (output layer) produces the final grand chord. When the audience applauds or winces (the loss function), a critic walks backward through the orchestra (**backpropagation**), tapping individual musicians on the shoulder to tell them: *"Play a little softer next time,"* or *"Louder on that beat!"*
 
 * **Underlying Logic:** A universal function approximator mapping input $\mathbf{x}$ to target $\hat{y}$ via compositions of parameterized linear projections and non-linear activations:
@@ -372,7 +372,7 @@ flowchart TD
 ---
 
 #### 2. Convolutional Neural Networks (CNN)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine inspecting a giant museum painting with a magnifying glass. You don't try to swallow the entire wall in one glance. You slide your small circular lens (the **convolution filter**) row by row. At each spot, your magnifying glass checks for tiny brushstrokes: vertical lines, curves, corners. Later layers combine those small brushstroke detections into larger shapes (eyes, wheels, doors), and the final layer determines whether the painting is a portrait or a landscape!
 
 * **Underlying Logic:** Preserves 2D grid topology and spatial correlation in images via local receptive fields, weight sharing, and spatial pooling.
@@ -387,7 +387,7 @@ flowchart TD
 ---
 
 #### 3. Recurrent Neural Networks (RNN)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Imagine reading a suspense mystery novel. As you read word by word, you don't memorize every single past letter. Instead, you keep a running mental summary in your head: *"The detective just found a muddy footprint."* When you read the next word, you update your mental summary. The **hidden state** is that running mental summary!
 
 * **Underlying Logic:** Models temporal dependencies across sequential tokens by maintaining an evolving internal hidden state vector $\mathbf{h}_t$.
@@ -400,7 +400,7 @@ flowchart TD
 ---
 
 #### 4. Long Short-Term Memory Networks (LSTM)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Think of an LSTM as a student studying for a history exam with a digital notebook.
 > - The **Forget Gate** is the backspace key: it deletes outdated information (like a rumor that was proven false).
 > - The **Input Gate** is the copy-paste tool: when the teacher says *"This will be on the final exam,"* it saves those key facts into the notebook.
@@ -418,7 +418,7 @@ flowchart TD
 ---
 
 #### 5. Practical Deep Learning Pipelines (CIFAR-10)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > Building a production-grade neural network is like preparing a gourmet feast:
 > - You need **quality ingredients** prepped properly (**Data Augmentation**: rotating and flipping pictures so the model doesn't just memorize one exact angle).
 > - You need **temperature control** (**Batch Normalization**: keeping numbers from getting too wild or cold).
@@ -472,7 +472,7 @@ flowchart LR
 ```
 
 #### 1. Training vs. High-Performance Inference
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **The Blueprint Design Studio vs. The Automated Assembly Line:**
 > In the architectural design studio (**Training**), engineers use heavy drafting tables, test miniature models, erase mistakes, redraw lines, and use tons of paper (**Backpropagation & Gradients**). It is slow, expensive, and requires giant supercomputers with massive VRAM.
 > Once the sports car blueprint is finalized, we don't bring the architects or their heavy drafting tables to the racetrack. We send the clean blueprint to an automated assembly line (**Inference Engine**). The factory doesn't question the design; it stamps out finished parts at lightning speed using the leanest, fastest robotic tools possible!
@@ -483,7 +483,7 @@ flowchart LR
 ---
 
 #### 2. OpenVINO™ Toolkit Architecture & Intermediate Representation (IR)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **The Vacuum-Sealed Suitcase:**
 > When you buy a pair of shoes at the mall, they come with bulky cardboard boxes, plastic wrappers, price tags, and receipt paper. If you try to pack 5 pairs of shoes into your travel suitcase with all that trash, your bag won't close!
 > OpenVINO acts as a vacuum sealer: it strips away the training tags, cuts out the unused branches (**Dead Code Elimination**), and compresses everything into two lean files:
@@ -498,7 +498,7 @@ flowchart LR
 ---
 
 #### 3. Deep Kernel & Operator Fusion
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **The Fast-Food Drive-Through Combo Meal:**
 > Imagine ordering lunch: you order a burger, walk back to your car, eat it; then walk back into the restaurant for fries, walk back to your car, eat them; then walk in a third time for a soda. You spent 90% of your time walking back and forth between your car and the counter (**Memory Bandwidth Bottleneck**)!
 > **Layer Fusion** is the kitchen packing the burger, fries, and drink into a single combo box. The worker hands it to you in one uninterrupted motion (**Single Fused GPU/CPU Kernel**), eliminating memory round-trips!
@@ -513,7 +513,7 @@ flowchart LR
 ---
 
 #### 4. Post-Training Quantization (NNCF: FP32 $\to$ INT8)
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **The Ultra-High Definition Oil Painting vs. The Pocket Print:**
 > An FP32 number uses 32 bits (4.2 billion possible numbers) to record every tiny decimal like $0.184729184$. It is like using a microscope to paint an apple.
 > An INT8 number uses just 8 bits (256 integer steps, from $-128$ to $+127$). By mapping the range of values onto a simple 256-rung ladder, the model takes up **$75\%$ less storage**, fits into CPU/GPU cache, and vector processors (like Intel AVX-512 VNNI or AMX) can calculate **four calculations in the time it used to take for one!**
@@ -530,7 +530,7 @@ flowchart LR
 ---
 
 #### 5. Asynchronous Multi-Stream Pipelines & Queue Execution
-> 🍋 **Layman's Analogy ("Explain Like I'm 5"):**
+> 🍋 **Layman's Analogy:**
 > **The Master Chef's 4-Burner Stove:**
 > If a cook prepares a meal synchronously: they put Pan 1 on Burner 1, stand still with their hands folded for 5 minutes until it cooks, remove it, and only then start prepping Pan 2. Three burners sit completely freezing!
 > With an **AsyncInferQueue**, the cook puts Pan 1 on Burner 1, immediately drops Pan 2 on Burner 2, toasts bread on Burner 3, and chops garnish while waiting for callbacks. The hardware accelerators stay saturated at $100\%$ efficiency!
@@ -599,7 +599,7 @@ flowchart LR
 | `ConfusionMatrixDisplay`| `sklearn.metrics` | Visualizes the confusion matrix as a Seaborn-style annotated heatmap. |
 | `roc_curve`, `auc` | `sklearn.metrics` | Computes True Positive Rate vs. False Positive Rate across all thresholds; Area Under Curve measures discriminative ability. |
 | `mean_squared_error` | `sklearn.metrics` | $\text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2$. Penalizes large regression errors quadratically. |
-| `r2_score` | `sklearn.metrics` | $R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$. Proportion of variance explained by the model ($1.0$ is perfect). |
+| `r2_score` | `sklearn.metrics` | $R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}$. Proportion of variance ed by the model ($1.0$ is perfect). |
 | `silhouette_score` | `sklearn.metrics` | Measures cluster separation and cohesion ($s \in [-1, 1]$; values $> 0.5$ indicate well-defined clusters). |
 | `davies_bouldin_score`| `sklearn.metrics` | Average similarity measure between each cluster and its most similar one (lower values indicate better clustering). |
 | `calinski_harabasz_score`| `sklearn.metrics` | Variance Ratio Criterion: ratio of between-cluster dispersion to within-cluster dispersion (higher is better). |
@@ -685,9 +685,9 @@ $$\begin{array}{c|c|c}
 |:---|:---|:---|
 | **Naftali Harris Clustering Visualizers** | [Visualizing K-Means Clustering](https://www.naftaliharris.com/blog/visualizing-k-means-clustering/)<br>[Visualizing DBSCAN Clustering](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/) | Step-by-step interactive animations showing centroid jumps in Lloyd's algorithm and $\epsilon$-density wave propagation in DBSCAN across non-convex smiley/spiral datasets. |
 | **Distill.pub t-SNE Interactive Guide** | [How to Use t-SNE Effectively](https://distill.pub/2016/misread-tsne/) | Interactive widgets showing how perplexity, step size, and cluster distance behave under t-SNE projections; clarifies why distance between clusters cannot be interpreted literally. |
-| **Seeing Theory (Brown University)** | [Seeing Theory: Visual Statistics](https://seeing-theory.brown.edu/) | Visual explainers of Bayes' Theorem, Compound Probabilities, Regression lines, and confidence intervals. |
+| **Seeing Theory (Brown University)** | [Seeing Theory: Visual Statistics](https://seeing-theory.brown.edu/) | Visual ers of Bayes' Theorem, Compound Probabilities, Regression lines, and confidence intervals. |
 | **TensorFlow Playground** | [playground.tensorflow.org](https://playground.tensorflow.org/) | Real-time browser playground showing decision boundary morphing, non-linear feature expansion, and overfitting. |
-| **MLU-Explain (Amazon Machine Learning)** | [MLU-Explain Visual Articles](https://mlu-explain.github.io/) | Beautiful visual, interactive articles on Decision Trees, Random Forests, Logistic Regression, Linear Regression, and ROC/AUC curves. |
+| **MLU- (Amazon Machine Learning)** | [MLU- Visual Articles](https://mlu-.github.io/) | Beautiful visual, interactive articles on Decision Trees, Random Forests, Logistic Regression, Linear Regression, and ROC/AUC curves. |
 
 ### 2. Conceptual Video Breakdowns & Lecture Series
 
